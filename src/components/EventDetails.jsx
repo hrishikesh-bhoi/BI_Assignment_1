@@ -6,7 +6,7 @@ const EventDetails = () => {
 
     const { eventId } = useParams();
 
-    const { data, loading, error } = useFetch(`http://be-meetup-app.vercel.app/events/${eventId}`);
+    const { data, loading, error } = useFetch(`https://be-meetup-app.vercel.app/events/${eventId}`);
 
     if(loading) {
         return <p className="container">Loading...</p>
