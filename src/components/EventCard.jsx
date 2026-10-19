@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const EventCard = () => {
   const { data, loading, error } = useFetch(
-    "http://localhost:3000/events"
+    `https://be-meetup-app.vercel.app/events`
   );
 
   const [searchTerm, setSearchTerm] = useState("");
