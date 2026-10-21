@@ -18,14 +18,21 @@ const EventCard = () => {
   const events = data?.data ?? [];
 
   const filteredEvents = events.filter((event) => {
+  const search = searchTerm.trim().toLowerCase();
 
-    const matchesTitle = event.title.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesTitle = (event.title ?? "")
+    .toLowerCase()
+    .includes(search);
 
-    const matchesType = eventType === "All" || event.type === eventType;
-
-    return matchesTitle && matchesType;
-  }
+  const matchesTags = (event.tags ?? []).some((tag) =>
+    tag.toLowerCase().includes(search)
   );
+
+  const matchesType =
+    eventType === "All" || event.type === eventType;
+
+  return (matchesTitle || matchesTags) && matchesType;
+});
 
   const resetFilters = () => {
     setSearchTerm("");
